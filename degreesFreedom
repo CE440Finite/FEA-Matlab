@@ -1,0 +1,17 @@
+i = 1; nr = 0;ncjt = 2;
+		
+while i <= 3
+    i1 = 2
+    while i1 <= 3
+        msup(i,i1)
+        if msup(i,i1) == 1
+            nr = nr + 1
+            i1 = i1 + 1
+        else
+            i1 = i1 + 1
+            continue
+        end
+    end
+    i = i + 1
+end
+        
