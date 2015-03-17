@@ -14,5 +14,5 @@ while i <= nj   % main loop
             i1 = i1 + 1;
             break
         end
-        % end for now tt
+        % end for now change 1
 end
