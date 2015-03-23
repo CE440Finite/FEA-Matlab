@@ -15,7 +15,7 @@ while i <= nj   % main loop
             break
         end
         while i2 < ncjt
-            i3 = (i-1)*ncjt + i2;      
+            i3 = (i-1)*ncjt + i2;
             if msup(i1, i2 + 1) == 1 %check that there is a restraint, cond = 1.
                 k = k + 1;
                 nsc(i3) = k;
@@ -25,9 +25,10 @@ while i <= nj   % main loop
                 nsc(i3) = j;
                 i2 = i2 + 1;
             end
+
         end
     end
-            
-            
-            
+
+
+
 end
