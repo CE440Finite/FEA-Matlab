@@ -1,4 +1,4 @@
-%% Joint Coordinate Numbers, Sec 4.2
+%% Joint Coordinate Numbers
 
 nsc = zeros(1,ncjt*nj);  %dimension and allocate coordinate number vector
 i = 1; j = 0; k = ndof;
@@ -16,6 +16,7 @@ while i <= nj   % main loop
         end
         while i2 < ncjt
             i3 = (i-1)*ncjt + i2;
+            
             if msup(i1, i2 + 1) == 1 %check that there is a restraint, cond = 1.
                 k = k + 1;
                 nsc(i3) = k;
