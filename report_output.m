@@ -9,8 +9,10 @@ fprintf(fid,'User Name: %s\n',getenv('USER'));
 fprintf(fid,'Operating System: %s\n',getenv('ARCH'));
 fprintf(fid,'Date & Time: %s\n\n',datestr(now));
 fprintf(fid,'\n\n');
+fprintf(fid,'-------------\n');
+fprintf(fid,'Program Input\n');
+fprintf(fid,'-------------\n\n');
 
-fprintf(fid,'** Program Input **\n\n');
 
 fprintf(fid,'Number of Joints: %u\n',nj);
 fprintf(fid,'Number of Members: %u\n',length(mprp));
@@ -44,7 +46,7 @@ fprintf(fid,'=============================\n\n');
 fprintf(fid,'No.      Modulus of Elasticity\n');
 fprintf(fid,'__       _____________________\n\n');
 for n = 1:length(em)
-    fprintf(fid,'%u             %.3e\n',n,msup(n));
+    fprintf(fid,'%u             %.3e\n',n,em(n));
 end
 fprintf(fid,'\n');
 fprintf(fid,'Defined Cross Sectional Area\n');
@@ -73,6 +75,8 @@ fprintf(fid,'________       ______      ______\n\n');
 for n = 1:length(jp)
     fprintf(fid,'%3u        %.2e        %.2e\n',jp(n),pj(n,1),pj(n,2));
 end
+fprintf(fid,'\n\n');
+
 
 
 

@@ -1,11 +1,13 @@
 Project Title: Problem 1
 User Name: ricky
 Operating System: maci64
-Date & Time: 04-Apr-2015 18:36:44
+Date & Time: 04-Apr-2015 18:44:12
 
 
 
-** Program Input **
+-------------
+Program Input
+-------------
 
 Number of Joints: 6
 Number of Members: 10
@@ -40,8 +42,8 @@ Defined Modulus of Elasticity
 No.      Modulus of Elasticity
 __       _____________________
 
-1             1.000e+00
-2             3.000e+00
+1             2.900e+04
+2             1.000e+04
 
 Defined Cross Sectional Area
 ============================
@@ -78,3 +80,5 @@ ________       ______      ______
 
   5        2.50e+01        0.00e+00
   6        0.00e+00        -6.00e+01
+
+

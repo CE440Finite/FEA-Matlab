@@ -4,7 +4,7 @@ while Count1 <= NDOF
 	Count2 = 1;
 	while Count2 <= NDOF
 		S(Count1,Count2) = S(Count1,Count2)/Z1;
-		Count2 =Count2+1
+		Count2 =Count2+1;
 	end
 	P(Count1) = P(Count1)/Z1;
 	Count3 = 1;
@@ -24,4 +24,3 @@ while Count1 <= NDOF
 	end
 	Count1 = Count1 = Count 1+1;
 end
-//Print P
