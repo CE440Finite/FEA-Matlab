@@ -68,12 +68,12 @@ for n = 1:length(mprp)
 end
 fprintf(fid,'\n');
 fprintf(fid,'Joint Loads\n');
-fprintf(fid,'=============================\n\n');
-fprintf(fid,'Joint No.      X-Load      Y-Load\n');
-fprintf(fid,'________       ______      ______\n\n');
+fprintf(fid,'===========\n\n');
+fprintf(fid,'Joint No.      X-Load         Y-Load\n');
+fprintf(fid,'________       ________      ________\n\n');
 
 for n = 1:length(jp)
-    fprintf(fid,'%3u        %.2e        %.2e\n',jp(n),pj(n,1),pj(n,2));
+    fprintf(fid,'%3u            %.2e      %.2e\n',jp(n),pj(n,1),pj(n,2));
 end
 fprintf(fid,'\n\n');
 
