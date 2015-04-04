@@ -1,7 +1,7 @@
 Project Title: Problem 1
 User Name: ricky
 Operating System: maci64
-Date & Time: 04-Apr-2015 17:43:19
+Date & Time: 04-Apr-2015 18:36:44
 
 
 
@@ -12,6 +12,8 @@ Number of Members: 10
 Number of Defined Modulus of Elasticity : 2
 Number of Defined Cross Sections: 3
 
+Joint Coordinates
+=================
 Joint      X-Coordinate       Y-Coordinate
 _____      ____________       ____________
 
@@ -22,6 +24,8 @@ _____      ____________       ____________
 5          2.880e+02          2.160e+02
 6          5.760e+02          2.160e+02
 
+Joint Restraint
+=================
 Joint      X-Restraint       Y-Restraint
 _____      ___________       ___________
 1               1                1
@@ -29,3 +33,48 @@ _____      ___________       ___________
 4               0                1
 
 1 = restrained, 0 = not restrained
+
+Defined Modulus of Elasticity
+=============================
+
+No.      Modulus of Elasticity
+__       _____________________
+
+1             1.000e+00
+2             3.000e+00
+
+Defined Cross Sectional Area
+============================
+
+No.      Cross Sectional Area
+__       ____________________
+
+1             8.000e+00
+2             1.200e+01
+3             1.600e+01
+
+Member Data
+===========
+
+Member No.     Start Joint No.     End Joint No.   Cross Section   Modulus of Elasticity
+_________      _______________     ____________    _____________   _____________________
+
+  1                    1                 2          8.000e+00           2.900e+04
+  2                    2                 3          8.000e+00           2.900e+04
+  3                    3                 4          1.600e+01           1.000e+04
+  4                    5                 6          8.000e+00           2.900e+04
+  5                    2                 5          8.000e+00           2.900e+04
+  6                    3                 6          8.000e+00           2.900e+04
+  7                    1                 5          1.200e+01           2.900e+04
+  8                    2                 6          1.200e+01           2.900e+04
+  9                    3                 5          1.200e+01           2.900e+04
+ 10                    4                 6          1.600e+01           1.000e+04
+
+Joint Loads
+=============================
+
+Joint No.      X-Load      Y-Load
+________       ______      ______
+
+  5        2.50e+01        0.00e+00
+  6        0.00e+00        -6.00e+01
