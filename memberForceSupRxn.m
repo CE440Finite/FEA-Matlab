@@ -29,10 +29,14 @@ while im <= nm
     cx = (xe - xb)./bl;
     cy = (ye - yb)./bl;
     
-    
-    % CALL SUBROUTINE, MDISPG, MTRANS, MDISPL, MSTIFFL, MFORCEL, MFORCEG,
-    % STORER
-    
+    mdispg(jb,je,ncjt,ndof,nsc,p);
+    mtrans(cx,cy,ncjt);
+    mdispl(ncjt,v,t);
+    mstiffl(e,a,bl,ncjt);
+    mforcel(ncjt,bk,u);
+    mforceg(ncjt,t,q);
+    storer(jb,je,ncjt,ndof,nsc,f);
+
     im = im + 1;
 end
 disp(r);
