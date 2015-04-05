@@ -26,10 +26,20 @@ while i <= nj   % main loop
                 nsc(i3) = j;
                 i2 = i2 + 1;
             end
-
         end
+        i1 = i1 +  1;     
     end
-
-
-
+    if icount == 0
+        i2 = 1;
+        while i2 < ncjt
+            i3 = (i-1)*ncjt + i2;
+            j = j + 1;
+            nsc(i3) = j;
+            i2 = i2 + 1;
+        end   
+    else
+        i = i + 1;
+    end
 end
+        
+
