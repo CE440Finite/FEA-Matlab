@@ -5,7 +5,7 @@ while i <= ndof
     z1 = s(i,i);
     j = 1;
     while j <= ndof
-        s(i,j) = s(i,j)/Z1;
+        s(i,j) = s(i,j)/z1;
         j =j+1;
     end
     p(i) = p(i)/z1;
