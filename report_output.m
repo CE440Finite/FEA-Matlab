@@ -1,7 +1,9 @@
 % This script will write the program input and output to a text file called
-% 'report.txt'.
+% 'report_projectName.txt' 
 
-fid = fopen('report.txt','w'); %create new file to write data to.
+
+fname = strcat('report_',name,'.txt');
+fid = fopen(fname,'w'); %create new file to write data to.
 
 product = ver('matlab');
 fprintf(fid,'Project Title: %s\n',name);
@@ -76,10 +78,5 @@ for n = 1:length(jp)
     fprintf(fid,'%3u            %.2e      %.2e\n',jp(n),pj(n,1),pj(n,2));
 end
 fprintf(fid,'\n\n');
-
-
-
-
-
 
 fclose(fid);
