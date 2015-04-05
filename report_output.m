@@ -3,16 +3,16 @@
 
 fid = fopen('report.txt','w'); %create new file to write data to.
 
-
+product = ver('matlab');
 fprintf(fid,'Project Title: %s\n',name);
 fprintf(fid,'User Name: %s\n',getenv('USER'));
 fprintf(fid,'Operating System: %s\n',getenv('ARCH'));
+fprintf(fid,'Matlab Version: %s\t%s\n',product.Version,product.Release);
 fprintf(fid,'Date & Time: %s\n\n',datestr(now));
 fprintf(fid,'\n\n');
 fprintf(fid,'-------------\n');
 fprintf(fid,'Program Input\n');
 fprintf(fid,'-------------\n\n');
-
 
 fprintf(fid,'Number of Joints: %u\n',nj);
 fprintf(fid,'Number of Members: %u\n',length(mprp));

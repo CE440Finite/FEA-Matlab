@@ -1,7 +1,8 @@
-Project Title: Problem 1
+Project Title: Project 1
 User Name: ricky
 Operating System: maci64
-Date & Time: 04-Apr-2015 18:47:21
+Matlab Version: 8.5	(R2015a)
+Date & Time: 04-Apr-2015 22:39:43
 
 
 
