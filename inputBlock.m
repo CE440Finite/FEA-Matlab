@@ -1,5 +1,6 @@
 %% Computer Program for Analysis of Plane Trusses -- INPUT BLOCK
-
+%% Project Name
+name = input('Enter a project name as a string variable : ');
 %% Request Joint Coordinates [x] and [y]
 disp('Input must be enclosed in the bracket [] with each entry separated by a space.')
 disp('Consistent units are required as this program will not convert units.')
