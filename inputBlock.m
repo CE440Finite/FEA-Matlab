@@ -54,21 +54,21 @@ mprp = zeros(nm,4);
 for i = 1:nm
     mprp(i,:) = input('Enter the information for Member');
 end
-
+%%
 % Recreate MPRP Matrix by substituting material values.
-
+mtab = mprp;
 % Modulus Conversion Loop
 for i = 1:length(em)
-    idxm = find(mprp(:,3) == i);
-    mprp(idxm,3) = em(i);
+    idxm = find(mtab(:,3) == i);
+    mtab(idxm,3) = em(i);
 end
 
 % Cross Section Conversion Loop
 for i = 1:length(cp)
-    idxc = find(mprp(:,4) == i);
-    mprp(idxc,4) = cp(i)*10;    %*10 to remove the possibility that the index = area
+    idxc = find(mtab(:,4) == i);
+    mtab(idxc,4) = cp(i)*10;    %*10 to remove the possibility that the index = area
 end
-mprp(:,4) = mprp(:,4)./10;      %Correct for multiplication by 10.
+mtab(:,4) = mtab(:,4)./10;      %Correct for multiplication by 10.
 
 disp('....................................................................')
 

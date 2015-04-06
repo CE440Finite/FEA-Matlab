@@ -1,6 +1,6 @@
 %% Calculate the number of degrees of freedom.
 
-i = 1; nr = 0;ncjt = 2;		%set the number of restraints (nr) = 0, for trusses ncjt = 2
+i = 1; nr = 0; ncjt = 2;		%set the number of restraints (nr) = 0, for trusses ncjt = 2
 		
 while i <= ns		%msup matrix has dimensions (ns,3) where ns = number of supported joints, iterations occurs vertically
     i1 = 2;		%iteration excludes first row of msup and works on msup(:,2:3)

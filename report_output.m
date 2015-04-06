@@ -66,7 +66,7 @@ fprintf(fid,'Member No.     Start Joint No.     End Joint No.   Cross Section   
 fprintf(fid,'_________      _______________     ____________    _____________   _____________________\n\n');
 for n = 1:length(mprp)
     fprintf(fid,'%3u                    %u                 %u          %.3e           %.3e\n',... 
-        n,mprp(n,1),mprp(n,2),mprp(n,4),mprp(n,3));
+        n,mtab(n,1),mtab(n,2),mtab(n,4),mtab(n,3));
 end
 fprintf(fid,'\n');
 fprintf(fid,'Joint Loads\n');
