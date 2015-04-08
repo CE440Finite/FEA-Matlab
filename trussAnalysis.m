@@ -3,6 +3,7 @@
 
 %% INPUT
 % Ask user for a project name, to be displayed in output file.
+ncjt = 2;
 name = input('Enter a project name: ','s');
 disp(' ')
 
@@ -82,9 +83,19 @@ pjx = input('Enter the loads that are applied in the X-direction: ')';
 pjy = input('Enter the loads that are applied in the Y-direction: ')';
 
 pj = [pjx pjy];
-
 disp('....................................................................')
 
+%% Number of Degrees of Freedom
+
+% READ FROM FUNCTION FILE degreesFreedom.m
+[nr, ndof] = degreesFreedom(ncjt, msup, ns, nj);
+
+%% Structure Coordinate Numbers
+
+%READ FROM FUNCTION FILE coordinateNum.m
+nsc = coordinateNum(ncjt, nj,ns, ndof, msup);
+
+%%
 
 
 
