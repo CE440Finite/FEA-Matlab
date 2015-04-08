@@ -1,4 +1,4 @@
-%% Calculate the number of degrees of freedom.
+function [nr, ndof] = degreesFreedom(ncjt, msup, ns, nj)
 
 i = 1; nr = 0; ncjt = 2;		%set the number of restraints (nr) = 0, for trusses ncjt = 2
 		
@@ -16,4 +16,5 @@ while i <= ns		%msup matrix has dimensions (ns,3) where ns = number of supported
     i = i + 1;			%move to next row and repear process
 end
 ndof = ncjt*nj-nr;
+end
         
