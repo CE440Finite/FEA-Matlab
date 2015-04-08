@@ -1,5 +1,5 @@
 %% Joint Coordinate Numbers
-ncjt = 2;
+function nsc = coordinateNum(ncjt, nj,ns, ndof, msup)
 nsc = zeros(1,ncjt*nj)';  %dimension and allocate coordinate number vector
 i = 1; j = 0;k = ndof; 
 
@@ -40,6 +40,7 @@ while i <= nj   % main loop
         i = i + 1;  
     end
     
+end
 end
         
 
