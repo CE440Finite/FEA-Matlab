@@ -1,14 +1,19 @@
 % This script will write the program input and output to a text file called
 % 'report_projectName.txt' 
 
-
 fname = strcat('report_',name,'.txt');
 fid = fopen(fname,'w'); %create new file to write data to.
-
 product = ver('matlab');
 fprintf(fid,'Project Title: %s\n',name);
-fprintf(fid,'User Name: %s\n',getenv('USER'));
-fprintf(fid,'Operating System: %s\n',getenv('ARCH'));
+t = isunix;
+if t == 1
+    fprintf(fid,'User Name: %s\n',getenv('USER'));
+    fprintf(fid,'Operating System: %s\n',getenv('ARCH'));
+else
+    [~,username] = dos('ECHO %USERNAME%');
+    fprintf(fid,'User Name: %s\n',username);
+    fprintf(fid,'Operating System: %s\n',system_dependent('getos'));
+end
 fprintf(fid,'Matlab Version: %s\t%s\n',product.Version,product.Release);
 fprintf(fid,'Date & Time: %s\n\n',datestr(now));
 fprintf(fid,'\n\n');
