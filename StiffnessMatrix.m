@@ -1,13 +1,35 @@
-%Stiffiness matrix generation
-NDOF% the degree of freedom will be define here
-IND=[3 4 1 2];% index assigned for the degree of freedom at joints of the truss
-for i=1:NDOF(4);% this i will have the  four values of assigned member end degree
-                % of freedom
-if IND(i)<=NDOF;
-    for j=1:4;
-        if ind(j)<=NDOF;
-            S(ind(i),ind(j))=S(ind(i),ind(j)+K(i,j));
-        end;
-    end;
-end;
-end
+%Stiffiness matrix generation 
+S=zeros(ndof,ndof); %initialize the stiffness matrix.ndof the degree 
+                    %of freedom will be defined here 
+   for i=1:nm
+   jb=coord(i,:); % this portion will be consistent with the variable
+                  %in input block
+   je=coord(i+1,:);
+   a=cp(i);
+   em=em(i);
+   
+    for i=1:nj
+   xb=coord(i,1);
+   yb=coord(i,2);
+   xe=coord(i+1,1);
+   yb=coord(i+1,2);
+   cosx=(xe-xb)/(sqrt((ye-yb)^2+(xe-xb)^2));
+   sinx=(ye-yb)/(sqrt((ye-yb)^2+(xe-xb)^2));
+    end
+ind(1)=nsc((jb(1)-1)*ncjt+1);
+ind(2)=nsc((jb(2)-1)*ncjt+2);
+ind(3)=nsc((je(1)-1)*ncjt+1);
+ind(4)=nsc((je(2)-1)*ncjt+2);
+
+%global stiffness  
+ for ik=1:4
+     if ind(ik)<=ndof;
+         for jk=1:4;
+             if ind(jk)<=ndof;
+               S(ind(ik),ind(jk)=S(ind(ik),ind(jk)+K(ik,jk));
+             end
+         end
+     end
+ end
+   end;
+         
