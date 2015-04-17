@@ -2,7 +2,7 @@ Project Title: Textbook Example
 User Name: ricky
 Operating System: maci64
 Matlab Version: 8.5	(R2015a)
-Date & Time: 05-Apr-2015 21:50:16
+Date & Time: 17-Apr-2015 15:59:02
 
 
 
@@ -82,5 +82,27 @@ ________       ________      ________
   2            0.00e+00      -7.50e+01
   5            2.50e+01      0.00e+00
   6            0.00e+00      -6.00e+01
+
+
+-------------
+Program Output
+-------------
+
+Member Axial Force
+==================
+
+Member No.      Axial Force        Compression/Tension
+_________       ___________        ___________________
+
+   1              -6.01e+01         Tension
+   2              -3.15e+01         Tension
+   3              4.86e+00         Compression
+   4              2.37e+01         Compression
+   5              -5.35e+01         Tension
+   6              8.51e+01         Compression
+   7              4.38e+01         Compression
+   8              -3.58e+01         Tension
+   9              4.54e+01         Compression
+  10              -6.08e+00         Tension
 
 
