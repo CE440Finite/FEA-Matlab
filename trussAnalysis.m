@@ -72,7 +72,7 @@ end
 % Cross Section Conversion Loop.
 for i = 1:length(cp)
     idxc = find(mtab(:,4) == i);
-    mtab(idxc,4) = cp(i)*10; 
+    mtab(idxc,4) = cp(i)*10;
 end
 mtab(:,4) = mtab(:,4)./10;
 disp('....................................................................')
@@ -95,7 +95,267 @@ disp('....................................................................')
 %READ FROM FUNCTION FILE coordinateNum.m
 nsc = coordinateNum(ncjt, nj,ns, ndof, msup);
 
-%%
+%% Structure Stiffness Matrix
+i = 1;
+s = zeros(ndof, ndof);
+while i <= ndof
+    j = 1;
+    while j <= ndof
+        s(i,j) = 0;
+        j = j + 1;
+    end
+    i = i + 1;
+end
+im = 1;
+
+while im <= nm
+    jb = mprp(im,1);
+    je = mprp(im,2);
+    i = mprp(im,3);
+    e = em(i);
+    i = mprp(im,4);
+    a = cp(i);
+    xb = coord(jb,1);
+    yb = coord(jb,2);
+    xe = coord(je,1);
+    ye = coord(je,2);
+    bl = sqrt((xe-xb).^2 + (ye - yb).^2);
+    cx = (xe - xb)./bl;
+    cy = (ye - yb)./bl;
+    
+    % --GLOBAL MEMBER STIFFNESS; from subroutine function file.
+    
+    gk = mstiffg(e,a,bl,cx,cy,ncjt);
+    
+    % --STIFFNESS MATRIX
+    i = 1;
+    while i <= 2*ncjt
+        if i <= ncjt
+            i1 = (jb - 1)* ncjt + i;
+            n1 = nsc(i1);
+        else
+            i1 = (je - 1)*ncjt + (i - ncjt);
+            n1 = nsc(i1);
+        end
+        
+        if n1 <= ndof
+            j = 1;
+            while j <= 2*ncjt
+                if j <= ncjt
+                    i1 = (jb - 1)*ncjt + j;
+                    n2 = nsc(i1);
+                else
+                    i1 = (je - 1)*ncjt + (j - ncjt);
+                    n2 = nsc(i1);
+                end
+                
+                if n2 <= ndof
+                    s(n1,n2) = s(n1,n2) + gk(i,j);
+                    j = j + 1;
+                else
+                    j = j + 1;
+                end
+            end
+            i = i + 1;
+        else
+            i = i + 1;
+        end
+    end
+    im = im + 1;
+end
+%% Joint Loads
+%READ FROM FUNCTION FILE jointload.m
+
+p = jointload(ndof,jp,pj,nsc,ncjt);
+
+
+%%  Joint Displacement
+% READ FROM FUNCTION FILE JointDisplacement.m
+[s, p] = JointDisplacement(ndof,s,p);
+
+%% Member Force and Joint Reactions
+bk = zeros(2*ncjt, 2*ncjt);
+t = zeros(2*ncjt, 2*ncjt);
+v = zeros(2*ncjt, 1);
+u = zeros(2*ncjt, 1);
+q = zeros(2*ncjt, 1);
+f = zeros(2*ncjt, 1);
+r = zeros(nr, 1);
+aforce = zeros(nm,1);
+
+i = 1;
+while i <= nr
+    r(i) = 0;
+    i = i + 1;
+end
+im = 1;
+
+while im <= nm
+    jb = mprp(im, 1);
+    je = mprp(im, 2);
+    i = mprp(im, 3);
+    e = em(i);
+    i = mprp(im, 4);
+    a = cp(i);
+    xb = coord(jb, 1);
+    yb = coord(jb, 2);
+    xe = coord(je, 1);
+    ye = coord(je, 2);
+    bl = sqrt((xe - xb).^2 + (ye - yb).^2);
+    cx = (xe - xb)./bl;
+    cy = (ye - yb)./bl;
+    
+    % -- MDISPG
+    i = 1;
+    while i <= 2*ncjt
+        v(i) = 0
+        i = i + 1;
+    end
+    j = (jb - 1)* ncjt;
+    i = 1;
+    
+    while i <= ncjt
+        j = j + 1;
+        n = nsc(j);
+        if n <= ndof
+            v(i) = p(n);
+            i = i + 1;
+        else
+            i = i + 1;
+        end
+    end
+    j = (je - 1)*ncjt;
+    i = ncjt + 1;
+    
+    while i <= 2*ncjt
+        j = j + 1;
+        n = nsc(j);
+        if n <= ndof
+            v(i) = p(n);
+            i = i + 1;
+        else
+            i = i + 1;
+        end
+    end
+    
+    
+    % -- MTRANS
+    i = 1;
+    while i <= 2*ncjt
+        j = 1;
+        while j <= 2*ncjt
+            t(i,j) = 0;
+            j = j + 1;
+        end
+        i = i + 1;
+    end
+    t(1,1) = cx;
+    t(1,2) = cy;
+    t(3,3) = cx;
+    t(3,4) = cy;
+    t(2,1) = -cy;
+    t(2,2) = cx;
+    t(4,3) = -cy;
+    t(4,4) = cx;
+    
+    % -- MDISPL
+    i = 1;
+    while i <= 2*ncjt
+        u(i) = 0;
+        i = i + 1;
+    end
+    i = 1;
+    
+    while i <= 2*ncjt
+        j = 1;
+        while j <= 2*ncjt
+            u(i) = u(i) + t(i,j) * v(j);
+            j = j + 1;
+        end
+        i = i + 1;
+    end
+    
+    % -- MSTIFFL
+    i = 1;
+    while i <= 2*ncjt
+        j = 1;
+        while j <= 2*ncjt
+            bk(i,j) = 0;
+            j = j + 1;
+        end
+        i = i + 1;
+    end
+    
+    z = (e*a)./bl;
+    bk(1,1) = z;
+    bk(1,3) = -z;
+    bk(3,1) = -z;
+    bk(3,3) = z;
+    
+    % -- MFORCEL
+    i = 1;
+    while i <= 2*ncjt
+        q(i) = 0;
+        i = i + 1;
+    end
+    i = 1;
+    
+    while i <= 2*ncjt
+        j = 1;
+        while j <= 2*ncjt
+            q(i) = q(i) + bk(i,j)* u(j);
+            j = j + 1;
+        end
+        i = i + 1;
+    end
+    aforce(im) = q(1);
+
+         
+    
+    % -- MFORCEG
+    i = 1;
+    
+    while i <= 2*ncjt
+        f(i) = 0;
+        i = i + 1;
+    end
+    i = 1;
+    while i <= 2*ncjt
+        j = 1;
+        while j <= 2*ncjt
+            f(i) = f(i) + t(i,j)*q(j);
+            j = j + 1;
+        end
+        i = i + 1;
+    end
+    
+    % -- STORER
+    
+    i = 1;
+    
+    while i <= 2*ncjt
+        if i <= ncjt
+            i1 = (jb - 1)* ncjt + i;
+            n = nsc(i1);
+        else
+            i1 = (je - 1)* ncjt + (i - ncjt);
+            n = nsc(i1);
+        end
+        if n > ndof
+            r(n-ndof) = r(n-ndof)+ f(i);
+            i = i + 1;
+        else
+            i = i + 1;
+        end
+    end
+    
+    im = im + 1;
+end
+
+
+
+
+
 
 
 
