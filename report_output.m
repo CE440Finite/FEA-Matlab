@@ -70,7 +70,7 @@ fprintf(fid,'Member Data\n');
 fprintf(fid,'===========\n\n');
 fprintf(fid,'Member No.     Start Joint No.     End Joint No.   Cross Section   Modulus of Elasticity\n');
 fprintf(fid,'_________      _______________     ____________    _____________   _____________________\n\n');
-for n = 1:length(mprp)
+for n = 1:length(mprp(:,1))
     fprintf(fid,'%3u                    %u                 %u          %.3e           %.3e\n',... 
         n,mtab(n,1),mtab(n,2),mtab(n,4),mtab(n,3));
 end
@@ -78,7 +78,7 @@ fprintf(fid,'\n');
 fprintf(fid,'Joint Loads\n');
 fprintf(fid,'===========\n\n');
 fprintf(fid,'Joint No.      X-Load         Y-Load\n');
-fprintf(fid,'________       ________      ________\n\n');
+fprintf(fid,'_________      ______         ______\n\n');
 
 for n = 1:length(jp)
     fprintf(fid,'%3u            %.2e      %.2e\n',jp(n),pj(n,1),pj(n,2));
@@ -104,15 +104,37 @@ fprintf(fid,'==================\n\n');
 fprintf(fid,'Member No.      Axial Force        Compression/Tension\n');
 fprintf(fid,'_________       ___________        ___________________\n\n');
 for i = 1:nm
-    fprintf(fid,'%4u              %5.2e         %s\n', i, aforce(i),stressC{i}{1});
+    fprintf(fid,'%4u              %3.3e         %s\n', i, abs(aforce(i)),stressC{i}{1});
+end
+fprintf(fid,'\n\n');
+
+fprintf(fid,'Joint Displacement\n');
+fprintf(fid,'==================\n\n');
+
+fprintf(fid,'Joint No.      X-Displacement        Y-Displacement\n');
+fprintf(fid,'_________      ______________        ______________\n\n');
+for i = 1:nj
+    fprintf(fid,'%4u              %3.3e         %3.3e\n', i, xtrans(i),ytrans(i));
+end
+fprintf(fid,'\n\n');
+fprintf(fid,'Support Reactions\n');
+fprintf(fid,'=================\n\n');
+fprintf(fid,'Joint No.      X-Reaction        Y-Reaction\n');
+fprintf(fid,'_________      __________        __________\n\n');
+
+for i = 1:ns
+    fprintf(fid,'%4u              %3.3e         %3.3e\n',jn(i) ,xreac(i),yreac(i));
 end
 fprintf(fid,'\n\n');
 
 fclose(fid);
 
+
+
 %% STRUCTURE PLOT
 % INITIAL SHAPE
-for n=1:length(mprp)
+orient landscape
+for n=1:length(mprp(:,1))
     str = num2str(n);
     startjoint = mtab(n,1);
     sjoint = coord(startjoint,:);
@@ -123,10 +145,26 @@ for n=1:length(mprp)
     plot(crds(:,1),crds(:,2),'k-');
     hold on
 end
-j = 1;
-for i = jp'
-    quiver(coord(i,1),coord(i,2),pj(j,1),pj(j,2),0.3, 'Color','red','LineWidth', ...
-        2, 'MaxHeadSize',.7)
-    hold on
-    j = j + 1;
+
+% DISPLACED SHAPE
+for n=1:length(mprp(:,1))
+    str = num2str(n);
+	startjoint = mtab(n,1);
+	sjoint = [coord(startjoint,:)];
+    startjointtrans = [xtrans(startjoint), ytrans(startjoint)];
+    sjoint = sjoint + startjointtrans;
+	endjoint = mtab(n,2);
+	ejoint = [coord(endjoint,:)];
+    endjointtrans = [xtrans(endjoint), ytrans(endjoint)];
+    ejoint = ejoint + endjointtrans;
+    
+    crds = vertcat(sjoint,ejoint);
+    plot(crds(:,1),crds(:,2),'r-.');
+    text(sjoint(1),sjoint(2),str);
+    hold on  
 end
+hold off
+legend({'Initial Shape' ,'Displaced Shape'},{'k-','r-.'})
+title('Truss Plot with Displacements')
+print(name,'-dtiff')
+

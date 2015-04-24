@@ -5,12 +5,12 @@
 % Ask user for a project name, to be displayed in output file.
 ncjt = 2;
 name = input('Enter a project name: ','s');
-disp(' ')
 
 % Ask for joint coordinates.
+disp('........................................................................................')
 disp('Input must be enclosed in the bracket [] with each entry separated by a space or comma.')
 disp('Consistent units are required as this program will not convert units.')
-disp('  ')
+disp('........................................................................................')
 
 nj = input('Enter the total number of joints in the truss: ');
 xcoord = input('Enter, in increasing order, the X-coordinate of each joint: ');
@@ -22,9 +22,9 @@ if size(coord,1) ~= nj
 end
 
 % Ask for joint restraints and restraint types.
-disp('....................................................................')
+disp('.....................................................................')
 disp('Restraint conditions are: 0 = FREE; 1= RESTRAINED');
-disp(' ')
+disp('.....................................................................')
 ns = input('How many joints are supported?: ');
 jn = input('Enter the joint numbers for the supported joints: ');
 xsup = input('Enter the restraint condition for each joint in the X-direction: ');
@@ -32,13 +32,12 @@ ysup = input('Enter the restraint condition for each joint in the Y-direction: '
 msup = [jn' xsup' ysup'];
 
 % Ask for material property.
-disp('....................................................................')
+disp('.....................................................................')
 em = input('Enter the modulus of elasticity for all materials: ')';
 id1 = [1:1:length(em)]';
 
 % Ask for material cross sections.
 disp('....................................................................')
-disp(' ')
 cp = input('Enter the cross sectional area for the members: ')';
 id2 = [1:1:length(cp)]';
 
@@ -385,11 +384,33 @@ for n = 1:nj %checks all joints
 	end
 end
 
-% should note that this onlt works if the joints are put in in order i.e restrained joints are put in, in increasing values. 
+rvecloc = 1;  
+xreac = zeros(ns,1); 
+yreac = zeros(ns,1);  
+xsupchk = 1; 
+ysupchk = 1;
+for n = 1:ns
+    xsupchk = msup(n,2); 
+	ysupchk = msup(n,3);
+    if xsupchk == 1
+      xreac(n) = r(rvecloc);
+      rvecloc = rvecloc +1;
+    end
+    if ysupchk == 1
+        yreac(n) = r(rvecloc);
+        rvecloc = rvecloc +1;
+    end
+end
 
+%% REPORT
+% -- Execute .m file
+report_output
 
-
-
+dir = pwd;
+outfile = strcat('Report file has been created and saved in: ',pwd,'/',fname);
+disp(outfile)
+imgfile = strcat('Truss image has been created and saved in: ',pwd,'name.tif');
+disp(imgfile)
 
 
 
