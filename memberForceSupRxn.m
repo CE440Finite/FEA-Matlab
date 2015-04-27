@@ -25,19 +25,17 @@ while im <= nm
     yb = coord(jb, 2);
     xe = coord(je, 1);
     ye = coord(je, 2);
-    bl = sqr*((xe - xb).^2 + (ye - yb).^2);
+    bl = sqrt((xe - xb).^2 + (ye - yb).^2);
     cx = (xe - xb)./bl;
     cy = (ye - yb)./bl;
     
-    mdispg(jb,je,ncjt,ndof,nsc,p);
-    mtrans(cx,cy,ncjt);
-    mdispl(ncjt,v,t);
-    mstiffl(e,a,bl,ncjt);
-    mforcel(ncjt,bk,u);
-    mforceg(ncjt,t,q);
-    storer(jb,je,ncjt,ndof,nsc,f);
+    v = mdispg(jb,je,ncjt,ndof,nsc,p,v);
+    t = mtrans(cx,cy,ncjt,t);
+    u = mdispl(ncjt,v,t,u);
+    bk = mstiffl(e,a,bl,ncjt,bk);
+    q = mforcel(ncjt,bk,u,q);
+    f = mforceg(ncjt,t,q,f);
+    r = storer(jb,je,ncjt,ndof,nsc,f,r);
 
     im = im + 1;
 end
-disp(r);
-    

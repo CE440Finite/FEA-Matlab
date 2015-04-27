@@ -1,4 +1,4 @@
-function t = mtrans(cx,cy,ncjt)
+function t = mtrans(cx,cy,ncjt,t)
 i = 1;
 while i <= 2*ncjt
     j = 1;
@@ -17,5 +17,4 @@ t(2,2) = cx;
 t(4,3) = -cy;
 t(4,4) = cx;
 
-disp(t)
 end

@@ -1,4 +1,3 @@
-%% Computer Program for Analysis of Plane Trusses -- INPUT BLOCK
 %% Project Name
 name = input('Enter a project name: ','s');
 disp(' ')
@@ -52,10 +51,11 @@ nm = input('How many members are contained in the truss? ');
 disp('Enter the member information as described above: ')
 mprp = zeros(nm,4);
 for i = 1:nm
-    mprp(i,:) = input('Enter the information for Member');
+    mbr = i; mbr = num2str(mbr);
+    fprintf('Enter the Information for Member %s',mbr)
+    mprp(i,:) = input(': ');
 end
-%%
-% Recreate MPRP Matrix by substituting material values.
+%% Recreate MPRP Matrix by substituting material values.
 mtab = mprp;
 % Modulus Conversion Loop
 for i = 1:length(em)
@@ -78,3 +78,6 @@ pjx = input('Enter the loads that are applied in the X-direction: ')';
 pjy = input('Enter the loads that are applied in the Y-direction: ')';
 
 pj = [pjx pjy];
+
+disp('....................................................................')
+

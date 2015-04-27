@@ -1,10 +1,9 @@
-function mdispl(ncjt, v, t)
+function u = mdispl(ncjt, v, t, u)
 i = 1;
 while i <= 2*ncjt
     u(i) = 0;
     i = i + 1;
 end
-
 i = 1;
 
 while i <= 2*ncjt
@@ -15,5 +14,4 @@ while i <= 2*ncjt
     end
     i = i + 1;
 end
-disp(u)
 end

@@ -12,7 +12,7 @@ S=zeros(ndof,ndof); %initialize the stiffness matrix.ndof the degree
    xb=coord(i,1);
    yb=coord(i,2);
    xe=coord(i+1,1);
-   yb=coord(i+1,2);
+   ye=coord(i+1,2);
    cosx=(xe-xb)/(sqrt((ye-yb)^2+(xe-xb)^2));
    sinx=(ye-yb)/(sqrt((ye-yb)^2+(xe-xb)^2));
     end
@@ -26,7 +26,7 @@ ind(4)=nsc((je(2)-1)*ncjt+2);
      if ind(ik)<=ndof;
          for jk=1:4;
              if ind(jk)<=ndof;
-               S(ind(ik),ind(jk)=S(ind(ik),ind(jk)+K(ik,jk));
+               S(ind(ik),ind(jk))=S(ind(ik),ind(jk)+K(ik,jk));
              end
          end
      end

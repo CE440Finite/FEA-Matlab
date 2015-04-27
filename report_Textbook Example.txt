@@ -2,7 +2,7 @@ Project Title: Textbook Example
 User Name: ricky
 Operating System: maci64
 Matlab Version: 8.5	(R2015a)
-Date & Time: 17-Apr-2015 15:59:02
+Date & Time: 23-Apr-2015 22:08:07
 
 
 
@@ -77,7 +77,7 @@ Joint Loads
 ===========
 
 Joint No.      X-Load         Y-Load
-________       ________      ________
+_________      ______         ______
 
   2            0.00e+00      -7.50e+01
   5            2.50e+01      0.00e+00
@@ -94,15 +94,40 @@ Member Axial Force
 Member No.      Axial Force        Compression/Tension
 _________       ___________        ___________________
 
-   1              -6.01e+01         Tension
-   2              -3.15e+01         Tension
-   3              4.86e+00         Compression
-   4              2.37e+01         Compression
-   5              -5.35e+01         Tension
-   6              8.51e+01         Compression
-   7              4.38e+01         Compression
-   8              -3.58e+01         Tension
-   9              4.54e+01         Compression
-  10              -6.08e+00         Tension
+   1              6.007e+01         Tension
+   2              3.146e+01         Tension
+   3              4.863e+00         Compression
+   4              2.375e+01         Compression
+   5              5.354e+01         Tension
+   6              8.510e+01         Compression
+   7              4.384e+01         Compression
+   8              3.576e+01         Tension
+   9              4.540e+01         Compression
+  10              6.079e+00         Tension
+
+
+Joint Displacement
+==================
+
+Joint No.      X-Displacement        Y-Displacement
+_________      ______________        ______________
+
+   1              0.000e+00         0.000e+00
+   2              7.457e-02         -2.025e-01
+   3              1.136e-01         0.000e+00
+   4              1.049e-01         0.000e+00
+   5              5.782e-02         -1.527e-01
+   6              2.834e-02         -7.924e-02
+
+
+Support Reactions
+=================
+
+Joint No.      X-Reaction        Y-Reaction
+_________      __________        __________
+
+   1              -2.500e+01         -2.630e+01
+   3              0.000e+00         -1.123e+02
+   4              0.000e+00         3.647e+00
 
 

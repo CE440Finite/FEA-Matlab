@@ -230,7 +230,7 @@ while im <= nm
         j = j + 1;
         n = nsc(j);
         if n <= ndof
-            v(i) = p(n)
+            v(i) = p(n);
             i = i + 1;
         else
             i = i + 1;
@@ -405,11 +405,11 @@ end
 %% REPORT
 % -- Execute .m file
 report_output
-
+disp('Note:')
 dir = pwd;
 outfile = strcat('Report file has been created and saved in: ',pwd,'/',fname);
 disp(outfile)
-imgfile = strcat('Truss image has been created and saved in: ',pwd,'name.tif');
+imgfile = strcat('Truss image has been created and saved in: ',pwd,'/',name,'.tif');
 disp(imgfile)
 
 

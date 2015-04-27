@@ -1,4 +1,4 @@
-function f = mforceg(ncjt,t,q)
+function f = mforceg(ncjt,t,q,f)
 i = 1;
 
 while i <= 2*ncjt
@@ -6,7 +6,6 @@ while i <= 2*ncjt
     i = i + 1;
 end
 i = 1;
-
 while i <= 2*ncjt
     j = 1;
     while j <= 2*ncjt
@@ -15,5 +14,4 @@ while i <= 2*ncjt
     end
     i = i + 1;
 end
-disp(f)
 end

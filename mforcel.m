@@ -1,11 +1,9 @@
-function q = mforcel(ncjt,bk,u)
+function q = mforcel(ncjt, bk, u, q)
 i = 1;
-
 while i <= 2*ncjt
     q(i) = 0;
     i = i + 1;
 end
-
 i = 1;
 
 while i <= 2*ncjt
@@ -15,7 +13,5 @@ while i <= 2*ncjt
         j = j + 1;
     end
     i = i + 1;
-end
-disp(q)
-    
+end    
 end
