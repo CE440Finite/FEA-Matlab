@@ -401,6 +401,7 @@ for n = 1:ns
         rvecloc = rvecloc +1;
     end
 end
+yreac = -1*yreac;
 
 %% REPORT
 % -- Execute .m file
