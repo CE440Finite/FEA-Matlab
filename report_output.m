@@ -151,11 +151,11 @@ for n=1:length(mprp(:,1))
     str = num2str(n);
 	startjoint = mtab(n,1);
 	sjoint = [coord(startjoint,:)];
-    startjointtrans = [xtrans(startjoint), ytrans(startjoint)];
+    startjointtrans = [xtrans(startjoint), ytrans(startjoint)]*100;
     sjoint = sjoint + startjointtrans;
 	endjoint = mtab(n,2);
 	ejoint = [coord(endjoint,:)];
-    endjointtrans = [xtrans(endjoint), ytrans(endjoint)];
+    endjointtrans = [xtrans(endjoint), ytrans(endjoint)]*100;
     ejoint = ejoint + endjointtrans;
     
     crds = vertcat(sjoint,ejoint);
