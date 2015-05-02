@@ -42,7 +42,7 @@ fprintf(fid,'=================\n');
 
 fprintf(fid,'Joint      X-Restraint       Y-Restraint\n');
 fprintf(fid,'_____      ___________       ___________\n');
-for n = 1:length(msup)
+for n = 1:length(msup(:,1))
     fprintf(fid,'%u               %u                %u\n',msup(n,1),msup(n,2),msup(n,3));
 end  
 fprintf(fid,'\n');
@@ -133,6 +133,7 @@ fclose(fid);
 
 %% STRUCTURE PLOT
 % INITIAL SHAPE
+axis equal
 orient landscape
 for n=1:length(mprp(:,1))
     str = num2str(n);
@@ -160,7 +161,6 @@ for n=1:length(mprp(:,1))
     
     crds = vertcat(sjoint,ejoint);
     plot(crds(:,1),crds(:,2),'r-.');
-    text(sjoint(1),sjoint(2),str);
     hold on  
 end
 hold off

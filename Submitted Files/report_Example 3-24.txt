@@ -1,0 +1,120 @@
+Project Title: Example 3-24
+User Name: ricky
+Operating System: maci64
+Matlab Version: 8.5	(R2015a)
+Date & Time: 02-May-2015 19:35:53
+
+
+
+-------------
+Program Input
+-------------
+
+Number of Joints: 5
+Number of Members: 7
+Number of Defined Modulus of Elasticity : 1
+Number of Defined Cross Sections: 2
+
+Joint Coordinates
+=================
+Joint      X-Coordinate       Y-Coordinate
+_____      ____________       ____________
+
+1          0.000e+00          0.000e+00
+2          2.400e+02          0.000e+00
+3          4.800e+02          0.000e+00
+4          0.000e+00          1.920e+02
+5          2.400e+02          1.920e+02
+
+Joint Restraint
+=================
+Joint      X-Restraint       Y-Restraint
+_____      ___________       ___________
+1               1                1
+4               1                1
+
+1 = restrained, 0 = not restrained
+
+Defined Modulus of Elasticity
+=============================
+
+No.      Modulus of Elasticity
+__       _____________________
+
+1             2.900e+04
+
+Defined Cross Sectional Area
+============================
+
+No.      Cross Sectional Area
+__       ____________________
+
+1             6.000e+00
+2             8.000e+00
+
+Member Data
+===========
+
+Member No.     Start Joint No.     End Joint No.   Cross Section   Modulus of Elasticity
+_________      _______________     ____________    _____________   _____________________
+
+  1                    1                 2          8.000e+00           2.900e+04
+  2                    2                 3          8.000e+00           2.900e+04
+  3                    1                 5          6.000e+00           2.900e+04
+  4                    2                 5          6.000e+00           2.900e+04
+  5                    2                 4          6.000e+00           2.900e+04
+  6                    4                 5          8.000e+00           2.900e+04
+  7                    3                 5          8.000e+00           2.900e+04
+
+Joint Loads
+===========
+
+Joint No.      X-Load         Y-Load
+_________      ______         ______
+
+  2            0.00e+00      -2.50e+01
+  3            0.00e+00      -2.50e+01
+
+
+-------------
+Program Output
+-------------
+
+Member Axial Force
+==================
+
+Member No.      Axial Force        Compression/Tension
+_________       ___________        ___________________
+
+   1              6.250e+01         Compression
+   2              3.125e+01         Compression
+   3              4.002e+01         Compression
+   4              0.000e+00         Compression
+   5              4.002e+01         Tension
+   6              6.250e+01         Tension
+   7              4.002e+01         Tension
+
+
+Joint Displacement
+==================
+
+Joint No.      X-Displacement        Y-Displacement
+_________      ______________        ______________
+
+   1              0.000e+00         0.000e+00
+   2              -6.466e-02         -1.940e-01
+   3              -9.698e-02         -4.809e-01
+   4              0.000e+00         0.000e+00
+   5              6.466e-02         -1.940e-01
+
+
+Support Reactions
+=================
+
+Joint No.      X-Reaction        Y-Reaction
+_________      __________        __________
+
+   1              9.375e+01         2.500e+01
+   4              -9.375e+01         2.500e+01
+
+
