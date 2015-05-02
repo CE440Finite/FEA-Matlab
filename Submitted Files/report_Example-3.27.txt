@@ -1,0 +1,190 @@
+Project Title: Example-3.27
+User Name: ricky
+Operating System: maci64
+Matlab Version: 8.5	(R2015a)
+Date & Time: 29-Apr-2015 21:47:02
+
+
+
+-------------
+Program Input
+-------------
+
+Number of Joints: 16
+Number of Members: 29
+Number of Defined Modulus of Elasticity : 1
+Number of Defined Cross Sections: 1
+
+Joint Coordinates
+=================
+Joint      X-Coordinate       Y-Coordinate
+_____      ____________       ____________
+
+1          0.000e+00          0.000e+00
+2          6.000e+00          0.000e+00
+3          1.200e+01          0.000e+00
+4          1.800e+01          0.000e+00
+5          2.400e+01          0.000e+00
+6          3.000e+01          0.000e+00
+7          3.600e+01          0.000e+00
+8          4.200e+01          0.000e+00
+9          4.800e+01          0.000e+00
+10          6.000e+00          3.500e+00
+11          1.200e+01          7.000e+00
+12          2.400e+01          7.000e+00
+13          3.600e+01          7.000e+00
+14          4.200e+01          3.500e+00
+15          1.800e+01          3.500e+00
+16          3.000e+01          3.500e+00
+
+Joint Restraint
+=================
+Joint      X-Restraint       Y-Restraint
+_____      ___________       ___________
+1               1                1
+9               0                1
+
+1 = restrained, 0 = not restrained
+
+Defined Modulus of Elasticity
+=============================
+
+No.      Modulus of Elasticity
+__       _____________________
+
+1             2.000e+08
+
+Defined Cross Sectional Area
+============================
+
+No.      Cross Sectional Area
+__       ____________________
+
+1             2.000e-02
+
+Member Data
+===========
+
+Member No.     Start Joint No.     End Joint No.   Cross Section   Modulus of Elasticity
+_________      _______________     ____________    _____________   _____________________
+
+  1                    1                 2          2.000e-02           2.000e+08
+  2                    2                 3          2.000e-02           2.000e+08
+  3                    3                 4          2.000e-02           2.000e+08
+  4                    4                 5          2.000e-02           2.000e+08
+  5                    5                 6          2.000e-02           2.000e+08
+  6                    6                 7          2.000e-02           2.000e+08
+  7                    7                 8          2.000e-02           2.000e+08
+  8                    8                 9          2.000e-02           2.000e+08
+  9                    9                 14          2.000e-02           2.000e+08
+ 10                    14                 13          2.000e-02           2.000e+08
+ 11                    13                 12          2.000e-02           2.000e+08
+ 12                    12                 11          2.000e-02           2.000e+08
+ 13                    11                 10          2.000e-02           2.000e+08
+ 14                    10                 1          2.000e-02           2.000e+08
+ 15                    10                 2          2.000e-02           2.000e+08
+ 16                    10                 3          2.000e-02           2.000e+08
+ 17                    11                 3          2.000e-02           2.000e+08
+ 18                    11                 5          2.000e-02           2.000e+08
+ 19                    15                 5          2.000e-02           2.000e+08
+ 20                    15                 3          2.000e-02           2.000e+08
+ 21                    15                 4          2.000e-02           2.000e+08
+ 22                    12                 5          2.000e-02           2.000e+08
+ 23                    5                 16          2.000e-02           2.000e+08
+ 24                    16                 13          2.000e-02           2.000e+08
+ 25                    16                 6          2.000e-02           2.000e+08
+ 26                    16                 7          2.000e-02           2.000e+08
+ 27                    13                 7          2.000e-02           2.000e+08
+ 28                    14                 7          2.000e-02           2.000e+08
+ 29                    14                 8          2.000e-02           2.000e+08
+
+Joint Loads
+===========
+
+Joint No.      X-Load         Y-Load
+_________      ______         ______
+
+  2            0.00e+00      -1.20e+02
+  3            0.00e+00      -1.20e+02
+  4            0.00e+00      -1.20e+02
+  5            0.00e+00      -1.20e+02
+  6            0.00e+00      -1.20e+02
+  7            0.00e+00      -1.20e+02
+  8            0.00e+00      -1.20e+02
+
+
+-------------
+Program Output
+-------------
+
+Member Axial Force
+==================
+
+Member No.      Axial Force        Compression/Tension
+_________       ___________        ___________________
+
+   1              7.200e+02         Tension
+   2              7.200e+02         Tension
+   3              7.200e+02         Tension
+   4              7.200e+02         Tension
+   5              7.200e+02         Tension
+   6              7.200e+02         Tension
+   7              7.200e+02         Tension
+   8              7.200e+02         Tension
+   9              8.335e+02         Compression
+  10              7.145e+02         Compression
+  11              8.229e+02         Compression
+  12              8.229e+02         Compression
+  13              7.145e+02         Compression
+  14              8.335e+02         Compression
+  15              1.200e+02         Tension
+  16              1.191e+02         Compression
+  17              2.400e+02         Tension
+  18              2.382e+02         Tension
+  19              1.191e+02         Tension
+  20              1.191e+02         Compression
+  21              1.200e+02         Tension
+  22              0.000e+00         Compression
+  23              1.191e+02         Tension
+  24              2.382e+02         Tension
+  25              1.200e+02         Tension
+  26              1.191e+02         Compression
+  27              2.400e+02         Tension
+  28              1.191e+02         Compression
+  29              1.200e+02         Tension
+
+
+Joint Displacement
+==================
+
+Joint No.      X-Displacement        Y-Displacement
+_________      ______________        ______________
+
+   1              0.000e+00         0.000e+00
+   2              1.080e-03         -1.229e-02
+   3              2.160e-03         -1.739e-02
+   4              3.240e-03         -2.187e-02
+   5              4.320e-03         -2.244e-02
+   6              5.400e-03         -2.187e-02
+   7              6.480e-03         -1.739e-02
+   8              7.560e-03         -1.229e-02
+   9              8.640e-03         0.000e+00
+  10              5.435e-03         -1.219e-02
+  11              6.789e-03         -1.697e-02
+  12              4.320e-03         -2.244e-02
+  13              1.851e-03         -1.697e-02
+  14              3.205e-03         -1.219e-02
+  15              4.471e-03         -2.177e-02
+  16              4.169e-03         -2.177e-02
+
+
+Support Reactions
+=================
+
+Joint No.      X-Reaction        Y-Reaction
+_________      __________        __________
+
+   1              4.547e-12         4.200e+02
+   9              0.000e+00         4.200e+02
+
+
